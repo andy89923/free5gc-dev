@@ -5,6 +5,7 @@ info:
 configuration:
   amfName: AMF # the name of this AMF
   ngapIpList:  # the IP list of N2 interfaces on this AMF
+    - 140.113.208.88
     - 127.0.0.18
   ngapPort: 38412 # the SCTP port listened by NGAP
 
