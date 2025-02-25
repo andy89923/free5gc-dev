@@ -1,4 +1,4 @@
-version: 1.0.3
+version: 1.0.4
 description: UPF initial local configuration
 
 # PFCP Configuration
@@ -25,6 +25,17 @@ gtpu:
       # name: upf.5gc.nctu.me
       # ifname: gtpif
       # mtu: 1400
+
+# SBI Configuration
+sbi:
+  scheme: http # the protocol for sbi (http or https)
+  registerIp: 127.0.0.8 # IP used to register to NRF, support IPv4 only
+  bindingIp: 127.0.0.8  # IP used to bind the service, support IPv4 only
+  port: 8000 # port used to bind the service
+  tls: # the local path of TLS key
+    pem: cert/upf.pem # AMF TLS Certificate
+    key: cert/upf.key # AMF TLS Private key
+  nrfUri: http://127.0.0.10:8000 # NRF URI
 
 # Supported DNNs
 # List of Data Network Names (DNN) supported by this UPF.
