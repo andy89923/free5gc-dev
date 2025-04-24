@@ -137,7 +137,8 @@ mongosh "$DB_NAME" --eval "$MONGO_SCRIPT"
 
 sleep 0.1
 
-NF_LIST="nrf amf smf udr pcf udm nssf ausf chf nef"
+# NF_LIST="nrf amf smf udr pcf udm nssf ausf chf nef"
+NF_LIST="nrf amf smf udr pcf udm nssf ausf chf"
 
 export GIN_MODE=release
 
@@ -165,6 +166,16 @@ if [ $TNGF_ENABLE -ne 0 ]; then
     TNGF_PID=$(pgrep -P $SUDO_TNGF_PID)
     PID_LIST+=($SUDO_TNGF_PID $TNGF_PID)
 fi
+
+
+echo "Started all NFs with PIDs: ${PID_LIST[@]}"
+
+echo "Starting webconsole..."
+cd webconsole && ./bin/webconsole -c ./config/webuicfg.yaml -l ${LOG_PATH}${LOG_NAME} &
+PID=$!
+PID_LIST+=($PID)
+
+echo "Started webconsole with PID ${PID}"
 
 wait ${PID_LIST}
 exit 0

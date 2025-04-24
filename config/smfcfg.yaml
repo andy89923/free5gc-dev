@@ -91,6 +91,7 @@ configuration:
         interfaces: # Interface list for this UPF
           - interfaceType: N3 # the type of the interface (N3 or N9)
             endpoints: # the IP address of this N3/N9 interface on this UPF
+              - 140.113.208.88
               - 127.0.0.8
             networkInstances: # Data Network Name (DNN)
               - internet
@@ -115,8 +116,8 @@ configuration:
   nrfUri: http://127.0.0.10:8000 # a valid URI of NRF
   nrfCertPem: cert/nrf.pem # NRF Certificate
   urrPeriod: 30 # default usage report period in seconds
-  urrThreshold: 500000 # default usage report threshold in bytes
-  requestedUnit: 1000
+  urrThreshold: 50000 # default usage report threshold in bytes
+  requestedUnit: 2000
 
 # Logging Configuration
 logger:
